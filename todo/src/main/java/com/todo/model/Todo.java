@@ -31,7 +31,7 @@ public class Todo  { // For Hateoas compatible(richardson maturity level-3) exte
 	@Size(min = 9, max = 20, message = "Length should be more than 9 and less than 20 character")
 	@Column(nullable = false) 
 	private String description;
-	@JsonFormat(pattern="dd-MM-yyyy") // validation annotation
+	//@JsonFormat(pattern="dd-MM-yyyy") // validation annotation
 	@Column
 	private Date targetDate;
 	@Column
