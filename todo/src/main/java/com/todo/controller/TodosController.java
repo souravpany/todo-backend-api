@@ -68,8 +68,6 @@ public class TodosController {
 			// throw new ResourceNotFoundException("Resource Not Found");
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Todo Not Found",
 					new ResourceNotFoundException("Resource Not Found"));
-
-			// throw new ResponseStatusException(HttpStatus.CONFLICT, "Todo Conflict");
 		}
 
 		return userTodos;
@@ -112,7 +110,7 @@ public class TodosController {
 		// return ResponseEntity.created(location).build(); // (It is just a wrapper) It
 		// will return what ever object you
 		// want and also HttpStatus
-		return new ResponseEntity<TodoDto>(newTodo, HttpStatus.CREATED); // 201
+		return new ResponseEntity<>(newTodo, HttpStatus.CREATED); // 201
 	}
 
 	// PUT - update the existing todos based on the user name shared in the path
@@ -130,7 +128,7 @@ public class TodosController {
 																						// handling..
 		}
 
-		return new ResponseEntity<TodoDto>(updateTodo, HttpStatus.OK);// default (OK) will be 200
+		return new ResponseEntity<>(updateTodo, HttpStatus.OK);// default (OK) will be 200
 	}
 
 	// DELETE - delete the resource based on id
@@ -145,7 +143,7 @@ public class TodosController {
 			throw new ResourceNotFoundException("Resource not found for given id " + id);
 		}
 
-		return new ResponseEntity<String>("Successfully Deleted Todo", HttpStatus.OK);
+		return new ResponseEntity<>("Successfully Deleted Todo", HttpStatus.OK);
 	}
 
 	/*
@@ -154,7 +152,7 @@ public class TodosController {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Map<String, String> handleValidationException(MethodArgumentNotValidException ex) {
-		Map<String, String> errors = new HashMap<String, String>();
+		Map<String, String> errors = new HashMap<>();
 
 		ex.getBindingResult().getAllErrors().forEach((error) -> {
 			String fieldName = ((FieldError) error).getField();
